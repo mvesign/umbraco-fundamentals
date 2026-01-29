@@ -2,12 +2,12 @@
 @{
     Layout = null;
 
-    var companyLogos = Model.Value<IEnumerable<IPublishedContent>>("companyLogos")?.ToArray() ?? [];
-    var umbracoLogo = Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos")?.FirstOrDefault();
+    var companyLogos = Model?.Value<IEnumerable<IPublishedContent>>("companyLogos")?.ToArray() ?? [];
+    var umbracoLogo = Model?.Value<IEnumerable<IPublishedContent>>("umbracoLogos")?.FirstOrDefault();
 
-    var yourNameValue = Model.Value<string>("yourName");
-    var yourDescriptionValue = Model.Value<string>("yourDescription");
-    var yourImgValue = Model.Value<IPublishedContent>("yourBeautifulFace");
+    var yourNameValue = Model?.Value<string>("yourName");
+    var yourDescriptionValue = Model?.Value<string>("yourDescription");
+    var yourImgValue = Model?.Value<IPublishedContent>("yourBeautifulFace");
 }
 
 <div class="jumbotron d-flex align-items-center">
