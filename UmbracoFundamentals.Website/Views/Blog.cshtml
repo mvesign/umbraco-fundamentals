@@ -24,7 +24,11 @@
                     <span class="clickable" onclick="clearSelections()"> Everything </span> |
                     @foreach (var tag in tags)
                     {
-                        <span class="clickable" onclick="toggleBlogItems(@($"'{tag.Text}'"))"> @tag.Text </span>
+                        var tagText = tag?.Text;
+                        if (!string.IsNullOrWhiteSpace(tagText))
+                        {
+                            <span class="clickable" onclick="toggleBlogItems(@($"'{tagText}'"))"> @tagText </span>
+                        }
                     }
                 </h6>
             </div>
@@ -44,7 +48,7 @@
                                 <div class="blog-item">
                                     <div class="blog-img">
                                         <a href="/">
-                                                <img src="https://placehold.co/400x250" alt="">
+                                            <img src="@(blogItem.Image?.Url() ?? "https://placehold.co/400x250")" alt="">
                                         </a>
                                     </div>
                                     <div class="blog-text">
