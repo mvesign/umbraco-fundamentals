@@ -1,4 +1,6 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<UmbracoFundamentals.Models.Content.HomePage>
+﻿@using UmbracoFundamentals.Models.Constants
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<UmbracoFundamentals.Models.Content.HomePage>
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
 @{
     Layout = "Master.cshtml";
 
@@ -24,9 +26,9 @@
             <!-- Section Title -->
             <div class="title-wrap mb-5">
                 <h2 class="section-title">
-                    Our courses
+                    @UmbracoHelper.GetDictionaryValue(TranslationKeys.HomeOurCourses)
                 </h2>
-                <p class="section-sub-title">What will it be today?</p>
+                <p class="section-sub-title">@UmbracoHelper.GetDictionaryValue(TranslationKeys.HomeWhatWillItBeToday)</p>
             </div>
             <!-- End of Section Title -->
             <div class="row">
@@ -222,7 +224,7 @@
             <div class="row ">
                 <div class="col-md-12">
                     <div class="title-wrap mb-5 above">
-                        <h2>Our partners</h2>
+                        <h2>@UmbracoHelper.GetDictionaryValue(TranslationKeys.HomeOurPartners)</h2>
                     </div>
                 </div>
                 <div class="col-md-12 client-holder">

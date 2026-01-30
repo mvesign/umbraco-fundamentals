@@ -1,8 +1,13 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using UmbracoFundamentals.Models.Constants
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
 @{
+
     Layout = null;
 
     var root = Model.Root();
+
+    var currentLanguage = $"{TranslationKeys.LanguagesPrefix}{Model.GetCultureFromDomains()}";
 
     var colorGradientStart = GetColor("colorGradientStart", "#1b264f");
 	var colorGradientEnd = GetColor("colorGradientEnd", "#3e4c9f");
@@ -55,20 +60,23 @@
                     @foreach (var child in root.Children())
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="@child.Url()">@child.Name</a>
+                            <a class="nav-link" href="@child.Url(Model.GetCultureFromDomains())">@child.Name</a>
                         </li>
                     }
                     <li class="nav-item lang-dropdown clickable" onclick="langDropdown()">
-
-                            <span class="nav-link">
-                               EN
-                            </span>
-
+                        <span class="nav-link">
+                            @UmbracoHelper.GetDictionaryValue(currentLanguage)
+                        </span>
                         <div class="lang-dropdown-content" style="visibility:hidden" id="langDropdown">
-                            We will add more here later
+                            @foreach (var (culture, infos) in root.Cultures)
+                            {
+                                <a class="nav-link" href="@Model.Url(culture)">
+                                    @UmbracoHelper.GetDictionaryValue($"{TranslationKeys.LanguagesPrefix}{culture}")
+                                </a>
+                            }
                         </div>
                     </li>
-            </ul>
+                </ul>
             </div>
         </div>
         </div>
