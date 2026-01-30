@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Core.PublishedCache;
+@using UmbracoFundamentals.Models.Constants
 @using UmbracoFundamentals.Models.Content;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Blog>
 @inject ITagQuery _tagQuery;
@@ -7,6 +8,8 @@
 
     var blogs = Model.Children<BlogEntry>().OrderByDescending(x => x.CreateDate);
     var tags = _tagQuery.GetAllContentTags();
+
+    const string DefaultImageUrl = "https://placehold.co/400x250";
 }
 <div class="jumbotron jumbotron-small jumbotron-single d-flex align-items-center">
   <div class="container text-center">
@@ -47,8 +50,16 @@
                             <div class="col-md-4 blog-item-wrapper">
                                 <div class="blog-item">
                                     <div class="blog-img">
-                                        <a href="/">
-                                            <img src="@(blogItem.Image?.Url() ?? "https://placehold.co/400x250")" alt="">
+                                        <a href="@blogItem.Url()">
+                                            @if (blogItem.Image != null)
+                                            {
+                                                var mediaCrop = Url.GetCropUrl(blogItem.Image, ImageCropAliases.BlogThumbnail);
+                                                <img src="@(mediaCrop?.ToHtmlString() ?? DefaultImageUrl)" alt="@blogItem.Image.Name">
+                                            }
+                                            else
+                                            {
+                                                <img src="@DefaultImageUrl" alt="">
+                                            }
                                         </a>
                                     </div>
                                     <div class="blog-text">
