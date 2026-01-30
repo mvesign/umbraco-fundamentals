@@ -2,7 +2,7 @@
 @using UmbracoFundamentals.Models.Content;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Shop>
 @{
-	Layout = "ChildPage.cshtml";
+	Layout = "childPage.cshtml";
 
 	var productsPage = Model.Root().FirstChild<Shop>();
 	var products = productsPage?.Children()?.ToArray() ?? [];
