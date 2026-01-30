@@ -1,19 +1,19 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<UmbracoFundamentals.Models.Content.HomePage>
 @{
-    Layout = null;
+    Layout = "Master.cshtml";
 
-    var companyLogos = Model?.Value<IEnumerable<IPublishedContent>>("companyLogos")?.ToArray() ?? [];
-    var umbracoLogo = Model?.Value<IEnumerable<IPublishedContent>>("umbracoLogos")?.FirstOrDefault();
+    var companyLogos = Model.Value<IEnumerable<IPublishedContent>>("companyLogos")?.ToArray() ?? [];
+    var umbracoLogo = Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos")?.FirstOrDefault();
 
-    var yourNameValue = Model?.Value<string>("yourName");
-    var yourDescriptionValue = Model?.Value<string>("yourDescription");
-    var yourImgValue = Model?.Value<IPublishedContent>("yourBeautifulFace");
+    var yourNameValue = Model.Value<string>("yourName");
+    var yourDescriptionValue = Model.Value<string>("yourDescription");
+    var yourImgValue = Model.Value<IPublishedContent>("yourBeautifulFace");
 }
 
 <div class="jumbotron d-flex align-items-center">
     <div class="container text-center">
         <h1 class="display-1 mb-4">
-            Your site name
+            @Model.HighlightText
         </h1>
     </div>
 </div>

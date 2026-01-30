@@ -1,10 +1,12 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<UmbracoFundamentals.Models.Content.TextPage>
 @{
-	Layout = null;
+    Layout = "Master.cshtml";
+
+    var childeren = Model.AncestorOrSelf(2).Children().ToArray();
 }
 <div class="jumbotron jumbotron-small jumbotron-single d-flex align-items-center">
   <div class="container text-center">
-    <h1 class="display-2 mb-4">Text page</h1>
+    <h1 class="display-2 mb-4">@Model.Name</h1>
   </div>
 </div>
 <section id="single-content" class="bg-white">
@@ -12,13 +14,23 @@
         <div class="section-content blog-content">
             <div class="row">
                 <div class="col-md-8 offset-md-2 mt-4">
-                   Ipsum text
+                    @Model.BodyText
                 </div>
                 <div class="col-md-2 mt-4 align-self-start">
-                    <ul class="side-nav">
-			<a href=""><li>Sample</li></a>
-			<a href=""><li>Sample</li></a>
-                    </ul>
+                    @if (childeren.Length > 0)
+                    {
+                        <ul class="side-nav">
+                        
+                            @foreach (var child in childeren)
+                            {
+                                <li>
+                                    <h6 class="uppercase">
+                                        <a class="@(Model.Name == child.Name ? "nav-current" : string.Empty)" href="@child.Url()">@child.Name</a>
+                                    </h6>
+                                </li>
+                            }
+                        </ul>
+                    }
                 </div>
             </div>
         </div>

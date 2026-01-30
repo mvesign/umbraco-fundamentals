@@ -50,6 +50,38 @@ namespace UmbracoFundamentals.Models.Content
 		// properties
 
 		///<summary>
+		/// Color Accent 1
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("colorAccent1")]
+		public virtual string ColorAccent1 => this.Value<string>(_publishedValueFallback, "colorAccent1");
+
+		///<summary>
+		/// Color Accent 2
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("colorAccent2")]
+		public virtual string ColorAccent2 => this.Value<string>(_publishedValueFallback, "colorAccent2");
+
+		///<summary>
+		/// Color Gradient End
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("colorGradientEnd")]
+		public virtual string ColorGradientEnd => this.Value<string>(_publishedValueFallback, "colorGradientEnd");
+
+		///<summary>
+		/// Color Gradient Start
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("colorGradientStart")]
+		public virtual string ColorGradientStart => this.Value<string>(_publishedValueFallback, "colorGradientStart");
+
+		///<summary>
 		/// Company Address
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
